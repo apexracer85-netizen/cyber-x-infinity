@@ -1,6 +1,6 @@
 const CACHE = 'cyberx-shell-v5-zero-trust';
 const SHELL = [
-  './', './index.html', './Command-Centre.html',
+  './', './index.html', './Command-Centre.html', './Full-Workspace.html',
   './manifest.webmanifest', './icons/cyberx-icon.svg',
   './Index/index.html', './Index/Code-Studio.html', './Index/cyberx-visual-theme.css',
   './Index/supabase-config.js', './Index/supabase-rest.js', './Index/login.js',
