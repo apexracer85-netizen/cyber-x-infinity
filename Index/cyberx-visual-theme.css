@@ -1,0 +1,66 @@
+/* CyberX reference visual system: charcoal surfaces, muted circuit traces, indigo/lavender accents. */
+:root{--cx-accent:#6265f4;--cx-accent-strong:#565af0;--cx-lavender:#aeb4ff;--cx-charcoal:#1b2224;--cx-card:#262d33;--cx-surface:#30383f;--cx-input:#4a585d;--cx-outline:#686cc5;--cx-soft:#c8cbd3}
+/* In-app workspace frame */
+body:has(#root){background:#4248a7!important;padding:clamp(8px,1.6vw,22px)!important}
+#root{position:relative;min-height:calc(100svh - 2 * clamp(8px,1.6vw,22px));border:1px solid #5d62bd;border-radius:24px;overflow:hidden;background:#1b2224;box-shadow:0 22px 65px #151b5a55}
+#root > div[class*="min-h-screen"]{min-height:calc(100svh - 2 * clamp(8px,1.6vw,22px))!important}
+#root [class~="bg-[#070B14]"]{background-color:#1b2224!important}
+#root [class*="bg-slate-950"],#root [class*="bg-slate-900"]{background-color:#20272b!important}
+#root [class*="bg-slate-800"]{background-color:#293137!important}
+#root [class*="bg-cyan-"]{background-color:#6265f4!important}
+#root [class*="hover:bg-cyan-"]:hover{background-color:#7477ff!important}
+#root [class*="text-cyan-"]{color:#b0b5ff!important}
+#root [class*="border-cyan-"]{border-color:#666be0!important}
+#root [class*="shadow-cyan-"]{--tw-shadow-color:#6265f4!important}
+#root .cyber-glass-card{background:linear-gradient(145deg,#2a3238,#20272b)!important;border-color:#454b73!important}
+#root input,#root textarea,#root select{background:#30383f!important;color:#f5f6fa!important;border-color:#515969!important}
+/* Command centre, code studio, and full-screen catalogue overlays */
+#cx-command{background:radial-gradient(ellipse at 50% 42%,#30334f 0%,#1e2529 48%,#171d20 100%)!important;color:#f2f3f8!important}
+#cx-command .cx-top,#cx-code-studio .cxs-top,#cxci-top{background:#252d33!important;border-color:#454b73!important}
+#cx-command .cx-emblem,#cx-code-studio .cxs-mark{background:#2c304b!important;border-color:#8589ff!important;color:#b8bdff!important;box-shadow:0 0 22px #7478ff30!important}
+#cx-command .cx-nav button.active,#cx-command .cx-nav button:hover,#cx-command .cx-top-actions button:hover{border-color:#777cff!important;background:#36395f!important;color:#f2f3ff!important}
+#cx-command .cx-card,#cx-command .cx-panel,#cx-command .cx-metric,#cx-code-studio .cxs-panel,#cxci-cats,#cxci-results{background:linear-gradient(145deg,#2b3339,#22292e)!important;border-color:#474f58!important;color:#f0f1f5!important}
+#cx-command button.primary,#cx-command .cx-btn.primary,#cx-code-studio .cxs-btn.primary,#cxci-close{background:linear-gradient(110deg,#6669f7,#5559eb)!important;border-color:#8588ff!important;color:white!important}
+#cx-code-studio{background:radial-gradient(ellipse at 50% 0%,#343653 0,#20272c 52%,#171d20 100%)!important}
+#cx-code-studio .cxs-btn{background:#353a5d!important;border-color:#666be0!important;color:#e7e8ff!important}
+#cx-code-studio .cxs-editor,#cx-code-studio textarea,#cx-code-studio select,#cx-code-studio input,#cxci-search{background:#171d22!important;color:#f0f2f7!important;border-color:#4d5561!important}
+#cx-code-index{background:#1b2224f5!important;color:#f2f3f8!important}
+.cxci-cat{background:#30383f!important;color:#e5e6ec!important}
+.cxci-cat.active{background:#36395f!important;border-color:#8589ff!important}
+.cxci-card{background:#283036!important;border-color:#505866!important}
+/* Resource pages */
+body.cx-resource-page{background:#4248a7!important;color:#f1f2f7!important;padding:clamp(8px,1.8vw,22px)!important;min-height:100svh}
+body.cx-resource-page>header,body.cx-resource-page>.resource-shell>header{background:#252d33ed!important;border:1px solid #464d70!important;border-radius:17px!important}
+body.cx-resource-page main,body.cx-resource-page .resource-shell{background:#1b2224!important;border:1px solid #464d70!important;border-radius:22px!important;min-height:calc(100svh - 44px);box-shadow:0 20px 55px #151b5a44}
+body.cx-resource-page .item,body.cx-resource-page .card,body.cx-resource-page .panel,body.cx-resource-page .integration,body.cx-resource-page .categories,body.cx-resource-page .results{background:linear-gradient(145deg,#2b3339,#22292e)!important;border-color:#4b5360!important;color:#f1f2f7!important}
+body.cx-resource-page input,body.cx-resource-page textarea,body.cx-resource-page select{background:#4a585d!important;border-color:#5c6570!important;color:#fff!important}
+body.cx-resource-page button,.cx-resource-page .btn,.cx-resource-page .primary{background:#35395e!important;border-color:#696fe2!important;color:#f1f2ff!important}
+body.cx-resource-page button:hover,.cx-resource-page .btn:hover,.cx-resource-page .primary:hover{background:#494c83!important}
+body.cx-resource-page .eyebrow,body.cx-resource-page .meta,body.cx-resource-page a{color:#b2b8ff!important}
+body.cx-resource-page .out,body.cx-resource-page pre{background:#171d21!important;border-color:#4a5260!important;color:#e9ebf0!important}
+/* Developer console */
+body.cx-developer-console{background:#4248a7!important;padding:clamp(8px,1.8vw,22px)!important}
+body.cx-developer-console #dashboardView{background:#1b2224!important;border:1px solid #5158a4;border-radius:22px;overflow:hidden;min-height:calc(100svh - 44px)}
+body.cx-developer-console .topbar,body.cx-developer-console .sidebar{background:#20272b!important;border-color:#4a5260!important}
+body.cx-developer-console .panel,body.cx-developer-console .stat,body.cx-developer-console .integration{background:linear-gradient(145deg,#2b3339,#22292e)!important;border-color:#4c5360!important}
+body.cx-developer-console .navbtn.active,body.cx-developer-console .navbtn:hover{background:#383b65!important;border-color:#777cff!important}
+body.cx-developer-console .pill,body.cx-developer-console .primary{background:#383b65!important;border-color:#777cff!important;color:#dedfff!important}
+@media(max-width:760px){#root{border-radius:14px}body.cx-resource-page{padding:0!important}body.cx-resource-page main,body.cx-resource-page .resource-shell{border-radius:0!important;min-height:100svh}body.cx-developer-console{padding:0!important}body.cx-developer-console #dashboardView{border-radius:0!important}}
+/* SOC command centre uses the dark navy / cyan / red / green security-operations palette. */
+#cx-command{background:radial-gradient(ellipse at 50% 42%,#0b2741 0%,#071321 45%,#030912 100%)!important;color:#e7f7ff!important}
+#cx-command .cx-top{background:#061321ed!important;border-color:#1c526e!important}
+#cx-command .cx-emblem{background:linear-gradient(145deg,#103c59,#071321)!important;border-color:#32d7ff!important;color:#5ee5ff!important;box-shadow:0 0 22px #06b6d44a!important}
+#cx-command .cx-nav button.active,#cx-command .cx-nav button:hover{background:#0e2c43!important;border-color:#287b9b!important;color:#dffaff!important}
+#cx-command .cx-panel,#cx-command .cx-metric{background:linear-gradient(145deg,#0a1c2def,#071321f5)!important;border-color:#1b4c68!important;color:#e7f7ff!important}
+#cx-command .cx-core{background:radial-gradient(ellipse at 50% 48%,#103b59 0,#091b2d 47%,#06101c 100%)!important}
+#cx-command .cx-panel-head{background:#07172566!important;border-color:#173d55!important;color:#cdeeff!important}
+#cx-command .cx-actions button{background:linear-gradient(130deg,#0d4262,#0b2d49)!important;border-color:#26779a!important;color:#dffaff!important}
+#cx-command .cx-actions button.secondary{background:#0a1b2b!important;border-color:#27485e!important;color:#a6c8dc!important}
+#cx-command .cx-live{color:#73f5bb!important}
+#cx-command .cx-live i{background:#4be6a1!important;box-shadow:0 0 8px #38f2a0!important}
+#cx-command .cx-demo{background:#4f2d171f!important;border-color:#80552a!important;color:#ffbf75!important}
+#cx-command .cx-threat-row{border-color:#17384e!important}
+#cx-command .cx-threat-top{color:#d6edf9!important}
+#cx-command .cx-core-caption b{color:#c9f8ff!important}
+#cx-command .cx-core-foot strong{color:#e1f9ff!important}
+#cx-command .cx-bottom .cx-panel{background:linear-gradient(145deg,#0a1c2def,#071321f5)!important}
