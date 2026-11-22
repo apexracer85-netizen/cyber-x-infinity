@@ -1,0 +1,36 @@
+CYBERX — START HERE
+
+HOSTED APP
+1. Open https://apexracer85-netizen.github.io/cyber-x-infinity/ (after GitHub Pages is enabled).
+2. Sign in at the single Index login screen.
+3. Normal accounts open the Zero Trust Command Centre.
+4. Approved owner/developer accounts open the private Developer Control Centre.
+
+LOCAL APP
+1. Download and extract the full CyberX ZIP.
+2. Keep the complete CyberX-Open-Me folder together.
+3. Double-click Index/Start-CyberX-Localhost.bat on Windows (Python 3 required).
+4. The launcher opens Index/index.html through localhost.
+
+MODULES
+- Command-Centre.html: Zero Trust operations dashboard.
+- Index/Code-Library.html: searchable code library.
+- Index/Code-Studio.html: editor and isolated browser execution for JavaScript/HTML/CSS.
+- Index/Device-Security-Lab.html: device selection and safe offline simulations.
+- Index/Developer-Console.html: private owner analytics and library synchronization.
+
+LOGIN AND SECURITY
+- Supabase Auth stores account passwords; no password is included in source files.
+- The owner account email is allowlisted as brightonsabo@gmail.com. Register it in CyberX and confirm the email before first use.
+- Use a new, strong password; never reuse a password shared in chat.
+- Google/Facebook/Apple sign-in require their OAuth provider credentials in Supabase Auth.
+- Never add a service-role key, private key, OAuth secret, or personal access token to browser files.
+
+DATA
+- The full local ZIP contains 104 curated code examples.
+- GitHub hosted starter catalogue currently contains 8 examples.
+- The owner can use Developer Console → Sync Catalogue to Cloud from the full local ZIP to publish all bundled examples to Supabase. Once published, other users read the shared database catalogue.
+- User metrics begin at zero until registered users use the application.
+
+IMPORTANT
+Do not open files directly from inside the ZIP preview or through file://. Use localhost or the hosted HTTPS site. SOC threat events and charts are illustrative sample telemetry until real monitoring collectors are connected. Only test devices you own or are authorized to administer.
