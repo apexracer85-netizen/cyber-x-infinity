@@ -82,12 +82,18 @@
     const button=$('sync');
     button.disabled=true;
     button.textContent='SYNCING…';
-    $('syncStatus').textContent='Reading the catalogue bundled in this GitHub repository…';
+    $('syncStatus').textContent='Reading the catalogue bundled in this hosted repository…';
     try {
       const response=await fetch('code-library.json',{cache:'no-store'});
       if (!response.ok) throw new Error('The repository code-library.json is missing (HTTP '+response.status+').');
       const library=await response.json();
-      if (!Array.isArray(library.entries) || library.entries.length<1) throw new Error('The code-library JSON did not contain an entries array.');
+      if (!Array.isArray(library.entries) || library.entries.length<100) {
+        const {data:cloud,error:cloudError}=await client.from('cyberx_public_library').select('payload').eq('library_key','code-library').maybeSingle();
+        if (cloudError) throw cloudError;
+        const count=cloud?.payload?.entries?.length||0;
+        $('syncStatus').textContent='This hosted repository contains a smaller starter catalogue ('+(library.entries?.length||0)+' examples). It will not overwrite the existing cloud copy ('+count+' examples). Use the full downloadable CyberX bundle from the owner computer to publish the complete 104-example catalogue.';
+        return;
+      }
       const payload={
         name:library.name || 'CyberX Global Code & Device Reference Library',
         version:String(library.version || '1'),
@@ -97,6 +103,13 @@
         categories:library.categories || [],
         entries:library.entries
       };
+      const {data:existing,error:readError}=await client.from('cyberx_public_library').select('payload').eq('library_key','code-library').maybeSingle();
+      if (readError) throw readError;
+      const currentCount=existing?.payload?.entries?.length||0;
+      if (currentCount>payload.entries.length) {
+        $('syncStatus').textContent='The current cloud catalogue has more entries than this copy. The larger shared catalogue was preserved.';
+        return;
+      }
       const {error}=await client.from('cyberx_public_library').upsert({library_key:'code-library',payload,updated_at:new Date().toISOString()},{onConflict:'library_key'});
       if (error) throw error;
       await audit('developer.library.sync',{entry_count:library.entries.length,version:payload.version});
