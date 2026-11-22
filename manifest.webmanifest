@@ -1,0 +1,19 @@
+{
+  "name": "CyberX Zero Trust Nexus",
+  "short_name": "CyberX",
+  "description": "Cybersecurity learning, code studio and device security workspace",
+  "start_url": "./Index/index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1b2224",
+  "theme_color": "#4248a7",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icons/cyberx-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
