@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="CyberX secure sign-in for normal users and developers.">
+<meta name="theme-color" content="#4248a7">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="./cyberx-visual-theme.css">
+<title>CyberX — Welcome Back</title>
+<style>
+:root{color-scheme:dark;--cx-purple:#6265f4;--cx-purple-light:#adb3ff;--cx-text:#f5f6fa;--cx-muted:#c5c9d1;--cx-frame:#1b2224;--cx-card:#262d33;--cx-field:#4a585d;--cx-line:#6670c9}
+*{box-sizing:border-box}html{min-height:100%;background:#4248a7}body{margin:0;min-height:100vh;min-height:100svh;background:#4248a7;color:var(--cx-text);font:15px/1.45 Inter,Segoe UI,Arial,sans-serif;display:grid;place-items:start center;padding:clamp(12px,2.9vw,46px)}
+.screen-frame{position:relative;isolation:isolate;width:min(1480px,100%);height:min(965px,calc(100svh - 44px));min-height:700px;border:1px solid #171d20;border-radius:26px;background:#1b2224;overflow:hidden;display:grid;place-items:center;box-shadow:0 22px 65px #151b5a55}
+.screen-frame:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 14% 10%,#343a4333,transparent 30%),radial-gradient(ellipse at 83% 82%,#292e3a33,transparent 32%)}
+.circuit-art{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.72;pointer-events:none}
+.home-link{position:absolute;top:9.5%;left:3.6%;z-index:2;display:inline-flex;align-items:center;justify-content:center;padding:9px 15px;border:1px solid #a1a7e2;border-radius:999px;background:#20272b;color:#d1d5ff;text-decoration:none;font-weight:650;font-size:14px;box-shadow:inset 0 0 0 1px #a1a7e222;transition:.2s}
+.home-link:hover{background:#303745;border-color:#d0d4ff;box-shadow:0 0 22px #777bff30}
+.auth-card{position:relative;z-index:1;width:min(588px,calc(100% - 34px));max-height:calc(100% - 44px);overflow-y:auto;padding:43px 50px 39px;background:#262d33;border:1px solid #30383f;border-radius:24px;box-shadow:0 25px 70px #0005,0 1px 0 #ffffff08 inset}
+.card-brand{text-align:center;color:#a8adf2;font:800 10px/1.2 ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px}
+.auth-card h1{margin:0;text-align:center;color:#aeb4ff;font:700 clamp(27px,3vw,38px)/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.025em}
+.subtitle{text-align:center;margin:7px 0 25px;color:#f1f2f5;font-size:15px}
+.field{display:grid;gap:8px;margin:0 0 23px}.field label{font-weight:600;color:#f5f6f8;font-size:15px}.field input{width:100%;height:45px;border:1px solid transparent;border-radius:999px;background:#4a585d;color:white;padding:0 18px;outline:0;font:15px/1.2 Inter,Segoe UI,Arial,sans-serif;box-shadow:inset 0 1px 3px #0002}.field input::placeholder{color:#d5d9dd;opacity:1}.field input:focus{border-color:#a4a9ff;box-shadow:0 0 0 3px #7478ff2b}.field input:-webkit-autofill{-webkit-text-fill-color:#fff;box-shadow:0 0 0 1000px #4a585d inset}
+.form-tools{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:-7px 0 18px;font-size:14px}.remember{display:inline-flex;align-items:center;gap:8px;color:#f4f5f8;cursor:pointer;user-select:none}.remember input{width:19px;height:19px;margin:0;accent-color:#6265f4}.link{border:0;padding:0;background:none;color:#b5baff;text-decoration:none;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer}.link:hover{text-decoration:underline;color:#e0e2ff}
+.primary-btn{width:100%;height:47px;border:0;border-radius:999px;background:linear-gradient(105deg,#6668f7,#555af0);color:#fff;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 7px 18px #5053e633;transition:filter .2s,transform .2s}.primary-btn:hover:not(:disabled){filter:brightness(1.11);transform:translateY(-1px)}.primary-btn:disabled{opacity:.56;cursor:wait}
+.divider{display:flex;align-items:center;gap:12px;color:#e2e4e8;font-size:13px;margin:25px 0 24px}.divider:before,.divider:after{content:"";height:1px;background:#657078;flex:1}
+.social-list{display:grid;gap:12px}.social-btn{width:100%;height:48px;display:flex;align-items:center;justify-content:center;gap:12px;border:1.5px solid #e4e7eb;border-radius:999px;background:transparent;color:#f5f6f8;font-size:15px;font-weight:600;cursor:pointer;transition:.18s}.social-btn:hover:not(:disabled){background:#ffffff0b;border-color:#fff;box-shadow:0 0 18px #a5aaff16}.social-btn:disabled{opacity:.55;cursor:wait}.social-btn svg{width:22px;height:22px;flex:0 0 22px}
+.signup{text-align:center;margin:17px 0 0;color:#f1f2f5;font-size:13px}.signup .link{font-size:13px}.status{display:none;min-height:0;margin:13px 0 0;padding:0;text-align:center;color:#c7cad6;font-size:11px;overflow-wrap:anywhere}.status:not(:empty){display:block}.status.error{padding:10px 12px;border:1px solid #865b6c;border-radius:12px;background:#39262e;color:#ffd5df}.status.ok{padding:10px 12px;border:1px solid #547b70;border-radius:12px;background:#20352f;color:#c7f5e5}
+.role-hint{text-align:center;margin:15px 0 0;color:#9ca4ac;font-size:10px;letter-spacing:.01em}.guest-link{display:block;text-align:center;margin-top:13px;color:#b2b6ff;font-size:11px;text-decoration:none}.guest-link:hover{text-decoration:underline}.home-foot{position:absolute;bottom:2.8%;left:3.6%;color:#7d8490;font:9px ui-monospace,monospace;letter-spacing:.15em}
+@media(max-width:760px){body{padding:0;display:block}.screen-frame{width:100%;height:auto;min-height:100svh;border:0;border-radius:0;padding:80px 12px 45px}.home-link{top:19px;left:17px;font-size:12px;padding:8px 12px}.auth-card{width:min(100%,520px);max-height:none;padding:34px 25px 29px;border-radius:21px}.auth-card h1{font-size:31px}.subtitle{margin-bottom:21px}.field{margin-bottom:20px}.form-tools{font-size:12px}.link{font-size:12px}.social-btn{height:46px;font-size:14px}.home-foot{left:18px;bottom:14px;font-size:8px}}
+@media(max-height:760px) and (min-width:761px){body{padding:16px}.screen-frame{height:auto;min-height:calc(100svh - 32px);padding:22px 0}.auth-card{padding:29px 42px}.subtitle{margin-bottom:18px}.field{margin-bottom:16px}.divider{margin:17px 0}.social-list{gap:9px}.social-btn{height:43px}.signup{margin-top:13px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="screen-frame" aria-label="CyberX sign-in">
+ <svg class="circuit-art" viewBox="0 0 1320 965" preserveAspectRatio="none" aria-hidden="true">
+  <defs><pattern id="dash" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(-42)"><rect width="9" height="18" fill="#777bb9" opacity=".75"/></pattern></defs>
+  <g fill="none" stroke="#6e73b5" stroke-width="1.25" opacity=".65">
+   <path d="M28 530H185l75 75h162l82-82h116"/><path d="M15 558h115l80 80h154l75-75h115"/><path d="M30 760h210l55-55h100l52-52h120"/>
+   <path d="M1320 180h-190l-90 90h-90l-80 80h-110"/><path d="M1320 330h-130l-70-70h-110l-84-84h-90"/><path d="M1310 430h-180l-80-80h-84l-94-94"/>
+   <path d="M600 0l80 80v90l85 85v80" stroke-dasharray="8 6" stroke-width="8"/><path d="M760 965l-75-75v-90l-88-88v-65" stroke-dasharray="8 6" stroke-width="8"/>
+   <path d="M0 830h102l70-70h112"/><path d="M1320 110h-90l-50 50h-110"/>
+  </g>
+  <g fill="#7f84c1" opacity=".78"><circle cx="45" cy="530" r="6"/><circle cx="260" cy="605" r="5"/><circle cx="422" cy="523" r="5"/><circle cx="240" cy="705" r="6"/><circle cx="1320" cy="180" r="6"/><circle cx="1040" cy="270" r="6"/><circle cx="950" cy="350" r="5"/><circle cx="1110" cy="430" r="5"/><circle cx="1195" cy="62" r="6"/><circle cx="1245" cy="96" r="4"/><circle cx="175" cy="760" r="5"/><circle cx="172" cy="640" r="5"/></g>
+  <g fill="none" stroke="#8589cb" stroke-width="2" opacity=".8"><circle cx="1145" cy="220" r="8"/><circle cx="1092" cy="314" r="7"/><circle cx="280" cy="805" r="8"/><circle cx="75" cy="890" r="7"/><circle cx="1250" cy="650" r="7"/></g>
+  <g fill="url(#dash)" opacity=".8"><path d="M10 485h220v26H10z"/><path d="M1120 390h190v25h-190z"/><path d="M1210 100h110v18h-110z"/><path d="M0 865h110v17H0z"/></g>
+ </svg>
+ <a class="home-link" id="homepagePreviewButton" href="../Command-Centre.html?mode=guest">Go to Homepage</a>
+ <section class="auth-card" aria-labelledby="formTitle">
+  <div class="card-brand">CYBERX · ZERO TRUST NEXUS</div>
+  <h1 id="formTitle">Welcome Back</h1>
+  <p class="subtitle" id="formLead">Please log in to your account</p>
+  <form id="authForm" novalidate>
+   <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" value="" placeholder="Enter your email" autocomplete="email" spellcheck="false" required></div>
+   <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" value="" placeholder="Enter your password" autocomplete="current-password" minlength="8" required></div>
+   <div class="form-tools"><label class="remember"><input id="rememberMe" type="checkbox" checked> <span>Remember me</span></label><button class="link" id="forgotButton" type="button">Forgot Password</button></div>
+   <button class="primary-btn" id="submitButton" type="submit">Login</button>
+  </form>
+  <div class="divider">or</div>
+  <div class="social-list">
+   <button class="social-btn" id="googleButton" type="button" aria-label="Continue with Google"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2l6.6 5.1c3.9-3.6 6.1-8.9 6.1-15z"/><path fill="#FF3D00" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 1.9-6.9 1.9-5.3 0-9.8-3.6-11.4-8.4l-6.8 5.2C7.1 39.4 14.9 44 24 44z"/><path fill="#4CAF50" d="M12.6 27.5a12.4 12.4 0 0 1 0-7l-6.8-5.2a20 20 0 0 0 0 17.4z"/><path fill="#1976D2" d="M24 12.1c3 0 5.7 1 7.8 3l5.8-5.8C34.1 5.9 29.5 4 24 4 14.9 4 7.1 8.6 5.8 15.3l6.8 5.2c1.6-4.8 6.1-8.4 11.4-8.4z"/></svg><span>Login With Google</span></button>
+   <button class="social-btn" id="facebookButton" type="button" aria-label="Continue with Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#80aaff" d="M13.6 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.4V13h2.8v8z"/></svg><span>Login With Facebook</span></button>
+   <button class="social-btn" id="appleButton" type="button" aria-label="Continue with Apple"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#f5f6f8" d="M16.7 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.5-2.6-1.7-3.2-1.7-1.4-.2-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.7 1.1 1.5 2.3 2.6 2.3 1 0 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.7 1.1 0 1.8-1.1 2.5-2.2.8-1.2 1.1-2.4 1.1-2.5-.1 0-2.2-.9-2.2-4zM14.4 6.4c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 0 2-.5 2.8-1.3z"/></svg><span>Login With Apple ID</span></button>
+  </div>
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+  <p class="signup"><span id="switchLabel">Don't have an Account?</span> <button class="link" id="modeToggle" type="button">Sign Up</button></p>
+  <p class="role-hint">One login for everyone · CyberX routes access by your verified account role.</p>
+  <a class="guest-link" id="guestButton" href="../Command-Centre.html?mode=guest">Explore CyberX guest demo</a>
+ </section>
+ <div class="home-foot">CYBERX ZERO TRUST NEXUS · SECURE ACCESS PORTAL</div>
+</main>
+<script src="./supabase-config.js"></script>
+<script src="./supabase-rest.js"></script>
+<script src="./login.js" defer></script>
+<script>if("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="127.0.0.1" || location.hostname==="localhost")){navigator.serviceWorker.register("../service-worker.js").catch(e=>console.warn("CyberX offline cache unavailable",e));}</script>
+</body></html>
