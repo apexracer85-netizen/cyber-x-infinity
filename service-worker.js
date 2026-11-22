@@ -1,12 +1,11 @@
-const CACHE = 'cyberx-shell-v4-command-centre-shared-library';
+const CACHE = 'cyberx-shell-v5-zero-trust';
 const SHELL = [
-  './', './index.html', './Full-Workspace.html', './Command-Centre.html',
+  './', './index.html', './Command-Centre.html',
   './manifest.webmanifest', './icons/cyberx-icon.svg',
   './Index/index.html', './Index/Code-Studio.html', './Index/cyberx-visual-theme.css',
   './Index/supabase-config.js', './Index/supabase-rest.js', './Index/login.js',
   './Index/Developer-Console.html', './Index/developer-console.js',
-  './Index/Code-Library.html', './Index/code-library.json', './Index/Device-Security-Lab.html',
-  './Index/access-guard.js', './SOCIAL-AUTH-SETUP.md'
+  './Index/Code-Library.html', './Index/code-library.json', './Index/Device-Security-Lab.html'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -17,9 +16,12 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin || event.request.method !== 'GET') return;
-  // Auth, database, and third-party responses must never be placed in the offline cache.
+  // Always use network-first. Never cache Supabase Auth, database, or external responses.
   event.respondWith(fetch(event.request).then(response => {
-    if (response.ok) { const copy = response.clone(); caches.open(CACHE).then(cache => cache.put(event.request, copy)); }
+    if (response.ok) {
+      const copy = response.clone();
+      caches.open(CACHE).then(cache => cache.put(event.request, copy));
+    }
     return response;
   }).catch(() => caches.match(event.request).then(cached => cached || caches.match('./Index/index.html'))));
 });
